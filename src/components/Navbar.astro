@@ -1,0 +1,73 @@
+<nav>
+    <div class="nav-container">
+        <div class="brd-logo">
+            <img src="https://www.breadriuss.com/logo_recortado.png" alt="Breadriuss Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li>Acerca de</li>
+            <li>Contacto</li>
+        </ul>
+    </div>
+</nav>
+ 
+
+<style>
+    .brd-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brd-logo img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        transform: translateY(-1.5px);
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: aliceblue;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        list-style: none;
+        color: #e4e4e4;
+        font-size: .9rem;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: sticky;
+        top: 0;
+    }
+
+    nav .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 68%;
+        padding: .5rem 1.5rem;
+        border: 1px solid rgba(37, 37, 37, 0.2);
+        margin-top: 1rem;
+        border-radius: 30px;
+        backdrop-filter: blur(10px);
+        background: linear-gradient(to right, rgba(15, 15, 15, 0.486), rgba(19, 19, 19, 0.486));
+    }
+
+    @media screen and (max-width: 768px) {
+        nav .nav-container {
+            width: 80%
+        }
+    }
+
+</style>
