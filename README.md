@@ -1,46 +1,73 @@
-# Astro Starter Kit: Basics
+# Brd+ Blog 
 
-```sh
-npm create astro@latest -- --template basics
+> **En Construcción** - Sitio en desarrollo activo
+
+Bienvenido al blog oficial de Brd+, un espacio donde compartimos conocimientos sobre desarrollo web, tecnología y ciberseguridad.
+
+## Características
+
+- Diseño moderno y responsivo
+- Construido con Astro para máximo rendimiento
+- Optimizado para móviles
+- SEO-friendly
+- Tema oscuro por defecto
+
+## Tecnologías Utilizadas
+
+- [Astro](https://astro.build/) - El framework web todo en uno
+- HTML5 & CSS3 - Para la estructura y estilos
+- JavaScript - Para la interactividad
+
+## Cómo Empezar
+
+1. **Clona el repositorio**
+   ```sh
+   git clone https://github.com/anthonycursewl/brd-blog.git
+   ```
+
+2. **Instala las dependencias**
+   ```sh
+   npm install
+   ```
+
+3. **Inicia el servidor de desarrollo**
+   ```sh
+   npm run dev
+   ```
+
+4. **Abre tu navegador**
+   Visita [http://localhost:4321](http://localhost:4321)
+
+## Comandos Útiles
+
+| Comando             | Acción                                    |
+|---------------------|------------------------------------------|
+| `npm install`       | Instalar dependencias                    |
+| `npm run dev`       | Iniciar servidor de desarrollo           |
+| `npm run build`     | Construir para producción                |
+| `npm run preview`   | Previsualizar compilación localmente     |
+
+## Estructura del Proyecto
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+├── public/          # Archivos estáticos
+├── src/
+│   ├── assets/     # Imágenes y fuentes
+│   ├── components/ # Componentes reutilizables
+│   ├── layouts/    # Plantillas de diseño
+│   └── pages/      # Páginas del sitio
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Contribución
 
-## 🧞 Commands
+Las contribuciones son bienvenidas. Por favor, lee nuestras pautas de contribución antes de enviar un pull request.
 
-All commands are run from the root of the project, from a terminal:
+## Licencia
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Este proyecto está bajo la licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Desarrollado con por el equipo de Brd+
