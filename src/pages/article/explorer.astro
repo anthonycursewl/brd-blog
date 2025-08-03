@@ -1,0 +1,564 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+// Client-side script for search functionality
+const searchScript = `
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-input');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articleCards = document.querySelectorAll('.article-card');
+    let activeFilter = 'Todos';
+
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      filterArticles(searchTerm, activeFilter);
+    });
+
+    // Filter functionality
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active filter
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        activeFilter = button.textContent;
+        
+        // Apply filter
+        const searchTerm = document.querySelector('.search-input').value.toLowerCase();
+        filterArticles(searchTerm, activeFilter);
+      });
+    });
+
+    function filterArticles(searchTerm, categoryFilter) {
+      articleCards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        const excerpt = card.querySelector('.excerpt').textContent.toLowerCase();
+        const cardCategory = card.querySelector('.category-tag').textContent;
+        
+        const matchesSearch = title.includes(searchTerm) || excerpt.includes(searchTerm);
+        const matchesCategory = categoryFilter === 'Todos' || cardCategory === categoryFilter;
+        
+        if (matchesSearch && matchesCategory) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  });
+`;
+
+const articles = [
+  {
+    id: 'ciberseguridad-2024',
+    title: 'Ciberseguridad en 2025: Tendencias y Desafíos Clave',
+    excerpt: 'Explora las tendencias más importantes en ciberseguridad para 2025 y cómo prepararte para los desafíos que vienen.',
+    date: '31 de Julio, 2025',
+    readTime: '5 min',
+    category: 'Tendencias',
+    image: 'https://www.genetec.com/binaries/content/gallery/illustrationstock_cyberthreats-recolored_adobestock_422696329.jpg',
+    author: 'Equipo Brd+'
+  },
+  {
+    id: 'defensa-cibernetica',
+    title: 'Defensa Cibernética: Estrategias para Proteger tu Organización',
+    excerpt: 'Aprende sobre las últimas técnicas y herramientas para proteger tus sistemas contra amenazas cibernéticas.',
+    date: '25 de Julio, 2025',
+    readTime: '7 min',
+    category: 'Seguridad',
+    image: 'https://itop.academy/wp-content/uploads/2022/08/por-que-formarse-en-ciberseguridad-itop-academy.jpg',
+    author: 'Equipo Brd+'
+  },
+  {
+    id: 'analisis-forense',
+    title: 'Análisis Forense Digital: Investigando Incidentes de Seguridad',
+    excerpt: 'Descubre los secretos del análisis forense digital y cómo se investigan los incidentes de seguridad.',
+    date: '20 de Julio, 2025',
+    readTime: '8 min',
+    category: 'Forensia',
+    image: 'https://blog.lacnic.net/wp-content/uploads/2020/07/ciberseguridad-julio-2020.png',
+    author: 'Equipo Brd+'
+  },
+  {
+    id: 'hacking-etico',
+    title: 'Introducción al Hacking Ético',
+    excerpt: 'Aprende los fundamentos del hacking ético y cómo utilizarlo para mejorar la seguridad de los sistemas.',
+    date: '15 de Julio, 2025',
+    readTime: '6 min',
+    category: 'Hacking',
+    image: 'https://www.infosecuritymexico.com/content/dam/sitebuilder/rxmx/infosecurity-mx/img/2020/ciberseguridad.jpg/_jcr_content/renditions/original.image_file.1918.1079.file/ciberseguridad.jpg',
+    author: 'Equipo Brd+'
+  },
+  {
+    id: 'proteccion-datos',
+    title: 'Protección de Datos en la Era Digital',
+    excerpt: 'Estrategias efectivas para proteger la información personal y empresarial en la era digital.',
+    date: '10 de Julio, 2025',
+    readTime: '5 min',
+    category: 'Privacidad',
+    image: 'https://www.accesscorp.com/wp-content/uploads/2024/11/Ciberseguranca.jpg',
+    author: 'Equipo Brd+'
+  },
+  {
+    id: 'seguridad-redes',
+    title: 'Seguridad en Redes: Mejores Prácticas',
+    excerpt: 'Conoce las mejores prácticas para asegurar tus redes corporativas y domésticas.',
+    date: '5 de Julio, 2025',
+    readTime: '4 min',
+    category: 'Redes',
+    image: 'https://universidadeuropea.com/resources/media/images/analista-ciberseguridad-800x450.width-640.jpg',
+    author: 'Equipo Brd+'
+  }
+];
+
+// Get unique categories for filter
+const categories = [...new Set(articles.map(article => article.category))];
+---
+
+<Layout title="Explorar Artículos | Brd+ Blog">
+  <Navbar />
+  
+  <main class="explorer-container">
+    <div class="explorer-header">
+      <h1>Explorar Artículos</h1>
+      <p class="subtitle">Descubre todo nuestro contenido sobre ciberseguridad y tecnología</p>
+      
+      <div class="search-container">
+        <div class="search-box">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            placeholder="Buscar artículos..." 
+            class="search-input" 
+            id="searchInput"
+            autocomplete="off"
+          />
+        </div>
+        
+        <div class="filters">
+          <button class="filter-btn active">Todos</button>
+          {categories.map(category => (
+            <button class="filter-btn">{category}</button>
+          ))}
+        </div>
+      </div>
+    </div>
+    
+    <div class="articles-grid">
+      {articles.map(article => (
+        <ArticleCard article={article} client:load />
+      ))}
+    </div>
+    <div id="no-results-message" class="no-results-message" style="display: none; opacity: 0; visibility: hidden;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        <line x1="8" y1="8" x2="16" y2="16" stroke="#ff6b6b"></line>
+      </svg>
+      
+      <h3>No se encontraron artículos</h3>
+      <p>Intenta con otros términos de búsqueda o ajusta los filtros.</p>
+    </div>
+    
+    <div class="pagination">
+      <button class="pagination-btn active">1</button>
+      <button class="pagination-btn">2</button>
+      <button class="pagination-btn">3</button>
+      <button class="pagination-btn next">Siguiente →</button>
+    </div>
+  </main>
+  
+  <Footer />
+  
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.querySelector('.search-input');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const articleCards = document.querySelectorAll('.article-card');
+      let activeFilter = 'Todos';
+      
+      // Initialize all cards as visible
+      articleCards.forEach(card => {
+        card.style.opacity = '1';
+      });
+
+      // Search functionality
+      searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        filterArticles(searchTerm, activeFilter);
+      });
+
+      // Filter functionality
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Update active filter
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          activeFilter = button.textContent;
+          
+          // Apply filter
+          const searchTerm = document.querySelector('.search-input').value.toLowerCase();
+          filterArticles(searchTerm, activeFilter);
+        });
+      });
+
+      function filterArticles(searchTerm, categoryFilter) {
+        let hasVisibleCards = false;
+        
+        // Process all cards to determine visibility
+        articleCards.forEach(card => {
+          const title = card.querySelector('h2').textContent.toLowerCase();
+          const excerpt = card.querySelector('.excerpt').textContent.toLowerCase();
+          const cardCategory = card.querySelector('.category-tag').textContent;
+          
+          const matchesSearch = searchTerm === '' || 
+                              title.includes(searchTerm) || 
+                              excerpt.includes(searchTerm);
+          const matchesCategory = categoryFilter === 'Todos' || 
+                                cardCategory === categoryFilter;
+          
+          if (matchesSearch && matchesCategory) {
+            card.style.display = 'block';
+            hasVisibleCards = true;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        // Handle no results message
+        const noResultsMessage = document.getElementById('no-results-message');
+        if (noResultsMessage) {
+          if (hasVisibleCards) {
+            noResultsMessage.style.opacity = '0';
+            noResultsMessage.style.visibility = 'hidden';
+            noResultsMessage.style.height = '0';
+            noResultsMessage.style.padding = '0';
+            noResultsMessage.style.margin = '0';
+            noResultsMessage.style.border = 'none';
+          } else {
+            // Show and animate in
+            noResultsMessage.style.display = 'flex';
+            noResultsMessage.style.visibility = 'visible';
+            noResultsMessage.style.opacity = '1';
+            noResultsMessage.style.height = 'auto';
+            noResultsMessage.style.padding = '4rem 2rem';
+            noResultsMessage.style.margin = '2rem 0';
+            noResultsMessage.style.border = '1px dashed var(--border)';
+          }
+        }
+      }
+    });
+  </script>
+  
+  <style>
+    :root {
+      --primary: #303030;
+      --primary-hover: #404040;
+      --text: #e0e0e0;
+      --text-light: #a0a0a0;
+      --bg: #0c0c0c;
+      --card-bg: rgba(20, 20, 20, 0.5);
+      --card-hover: rgba(52, 28, 95, 0.15);
+      --border: #333;
+    }
+    
+    .explorer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      color: var(--text);
+    }
+    
+    .explorer-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .explorer-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #fff, #bfa5fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    
+    .subtitle {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .search-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--card-bg);
+      border-radius: 30px;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+    
+    .search-box svg {
+      margin-right: 0.5rem;
+      color: var(--text-light);
+    }
+    
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      width: 100%;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    
+    .search-input:focus {
+      outline: none;
+    }
+    
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    
+    .filter-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    
+
+    
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    
+    .article-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease-out;
+      border: 1px solid var(--border);
+      opacity: 1;
+      transform: translateY(0);
+      will-change: transform, opacity;
+    }
+    
+    .article-card.hidden {
+      opacity: 0;
+      transform: translateY(10px);
+      position: absolute;
+      pointer-events: none;
+      width: 0;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      border: none;
+      visibility: hidden;
+    }
+    
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      background: var(--card-hover);
+    }
+    
+    .article-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      height: 100%;
+    }
+    
+    .article-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .article-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .article-card:hover .article-image img {
+      transform: scale(1.05);
+    }
+    
+    .category-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .article-content {
+      padding: 1.5rem;
+    }
+    
+    .article-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+    
+    .article-content h2 {
+      font-size: 1.4rem;
+      margin: 0 0 1rem 0;
+      color: white;
+      line-height: 1.4;
+    }
+    
+    .excerpt {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    
+    .author {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    
+    .no-results-message {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      margin: 2rem 0;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease-out;
+      visibility: hidden;
+      overflow: hidden;
+      background: rgba(20, 20, 20, 0.8);
+    }
+    
+    .no-results-message.visible {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+    
+
+    
+    .no-results-message svg {
+      margin-bottom: 1.5rem;
+      color: var(--text-light);
+    }
+    
+    .no-results-message h3 {
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    
+    .no-results-message p {
+      color: var(--text-light);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    
+    .pagination-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .pagination-btn:hover, .pagination-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .pagination-btn.next {
+      width: auto;
+      padding: 0 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .explorer-header h1 {
+        font-size: 2rem;
+      }
+      
+      .filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .filter-btn {
+        white-space: nowrap;
+      }
+    }
+  </style>
+</Layout>

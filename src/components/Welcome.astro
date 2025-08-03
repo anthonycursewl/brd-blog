@@ -1,74 +1,317 @@
 ---
 import Navbar from "./Navbar.astro";
 import Footer from "./Footer.astro";
+import ArticleCard from "./ArticleCard.astro";
+
+// Card data
+const articles = [
+  {
+    id: 'ciberseguridad-2024',
+    title: 'Ciberseguridad en 2025: Tendencias y Desafíos Clave',
+    excerpt: 'Explora las tendencias más importantes en ciberseguridad para 2025 y cómo prepararte para los desafíos que vienen.',
+    date: '31 de Julio, 2025',
+    readTime: '5 min',
+    category: 'Tendencias',
+    image: 'https://www.genetec.com/binaries/content/gallery/illustrationstock_cyberthreats-recolored_adobestock_422696329.jpg',
+    author: 'Equipo Brd+'
+  },
+  {
+    id: 'defensa-cibernetica',
+    title: 'Defensa Cibernética: Estrategias para Proteger tu Organización',
+    excerpt: 'Aprende sobre las últimas técnicas y herramientas para proteger tus sistemas contra amenazas cibernéticas.',
+    date: '25 de Julio, 2025',
+    readTime: '7 min',
+    category: 'Seguridad',
+    image: 'https://itop.academy/wp-content/uploads/2022/08/por-que-formarse-en-ciberseguridad-itop-academy.jpg',
+    author: 'Equipo Brd+'
+  },
+  {
+    id: 'analisis-forense',
+    title: 'Análisis Forense Digital: Investigando Incidentes de Seguridad',
+    excerpt: 'Descubre los secretos del análisis forense digital y cómo se investigan los incidentes de seguridad.',
+    date: '20 de Julio, 2025',
+    readTime: '8 min',
+    category: 'Forensia',
+    image: 'https://blog.lacnic.net/wp-content/uploads/2020/07/ciberseguridad-julio-2020.png',
+    author: 'Equipo Brd+'
+  },
+];
 ---
 
 <section class="arc-section">
-	<Navbar />
+  <Navbar />
 
-	<div class="welcome-container">
-		<h1>Bienvenido a Brd+ | Blog</h1>
+  <div class="welcome-container">
+    <h1>Bienvenido a Brd+ | Blog</h1>
+    <p class="subtitle">Tu fuente confiable de conocimiento en ciberseguridad</p>
+    <p class="description">Explora artículos, tutoriales y recursos sobre hacking ético, seguridad ofensiva, defensa cibernética y más. Mantente actualizado con las últimas amenazas y tendencias en el mundo de la seguridad informática.</p>
 
-		<p>Encontrarás aquí todo lo que necesitas para empezar tu camino hacia la ciberseguridad.</p>
+    <div class="btn-container">
+      <a href="/article/explorer">Explorar Artículos</a>
+      <button class="secondary">Únete a la Comunidad</button>
+    </div>
+  </div>
 
-		<div class="btn-container">
-			<button>Comenzar</button>
-		</div>
-	</div>
-
-	<Footer />
+  <div class="features">
+    <h2>Nuestros Temas Destacados</h2>
+    <div class="cards-container">
+      {articles.map(article => (
+        <ArticleCard article={article} />
+      ))}
+    </div>
+  </div>
+  <Footer />
 </section>
 
 <style>
-	h1 {
-		margin: 0;
-		padding: 0;
-		color: rgb(255, 255, 255);
-		font-size: 4rem;
-	}
+  :root {
+    --primary-color: #303030;
+    --secondary-color: #171718;
+    --text-light: #ffffff;
+    --text-dark: #1f2937;
+    --card-bg: rgba(20, 20, 20, 0.1);
+    --card-hover: rgba(52, 28, 95, 0.15);
+  }
 
-	p {
-		color: rgb(255, 255, 255);
-		font-size: 1.5rem;
-		margin: 0;
-	}
+  h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+    color: var(--text-light);
+  }
 
-	.arc-section {
-		height: 100vh;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		flex-direction: column;
-	}
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    background: linear-gradient(90deg, #fff, #bfa5fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-	.welcome-container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		width: 70%;
-		margin-top: 2rem;
-		height: 500px;
-		border-radius: 20px;
-		background-image: url("https://polar.sh/assets/landing/hero.jpg");
-		background-size: cover;
-		background-position: center;
-		mask-image: linear-gradient(to bottom, black 70%, transparent 100%)
-	}
+  h2 {
+    font-size: 2.5rem;
+    margin: 3rem 0 2rem;
+    text-align: center;
+	color: var(--text-light);
+  }
 
-	.btn-container {
-		margin-top: 5rem;
-	}
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
 
-	button {
-		background-color: #f0f0f0;
-		color: #111111;
-		border: none;
-		padding: .6rem 1.2rem;
-		cursor: pointer;
-		border-radius: 30px;
-		font-family: 'Onest', sans-serif;
-		font-size: .9rem;
-	}
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #cbd5e1;
+  }
+
+  .description {
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto 2rem;
+    color: #e0e0e0;
+	font-family: 'Bitcount Prop Single', sans-serif;
+	font-size: 1.1rem;	
+	font-weight: 600;
+  }
+
+  .arc-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0c0c0c, #0c0c0c, #0c0c0c);
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .welcome-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 6rem 1rem 4rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .btn-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  a, button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    font-family: 'Onest', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-decoration: none;
+  }
+
+  button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+  }
+
+  button.secondary {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+  }
+
+  button.secondary:hover {
+    background-color: rgba(37, 99, 235, 0.1);
+  }
+
+  .features {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem;
+    box-sizing: border-box;
+  }
+
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px dashed rgb(43, 43, 43);
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    background: var(--card-hover);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .card h3 {
+    margin-bottom: 0.8rem;
+    color: white;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .card-link {
+    color: #f2eaff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+  }
+
+  .card-link:hover {
+    color: #93c5fd;
+  }
+
+  .card-link::after {
+    content: '→';
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .card-link:hover::after {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+      padding: 0 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      padding: 0 1rem;
+    }
+
+    .description {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+
+    .welcome-container {
+      padding: 5rem 1rem 3rem;
+    }
+
+    .features {
+      padding: 0 1rem 2rem;
+    }
+
+    .cards-container {
+      grid-template-columns: 1fr;
+      padding: 0 1rem;
+      gap: 1.5rem;
+    }
+
+    .btn-container {
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+      padding: 0 1rem;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
 </style>

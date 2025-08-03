@@ -1,0 +1,243 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+---
+
+<Layout title="Acerca de">
+    <Navbar />
+
+  <main class="about-container">
+    <section class="about-hero">
+      <div class="container">
+        <h1>Sobre Este Proyecto</h1>
+        <p class="subtitle">Conoce más sobre nuestra iniciativa y el equipo detrás de este blog</p>
+      </div>
+    </section>
+
+    <section class="about-content container">
+      <article class="about-mission">
+        <h2>Nuestra Misión</h2>
+        <p>
+          Este proyecto nace con la visión de crear un espacio donde compartir conocimientos, experiencias y reflexiones 
+          sobre desarrollo web, tecnología y diseño. Nuestro objetivo es construir una comunidad de aprendizaje continuo 
+          donde tanto principiantes como expertos puedan encontrar valor.
+        </p>
+      </article>
+
+      <article class="about-team">
+        <h2>El Equipo</h2>
+        <p>
+          Detrás de este proyecto hay un equipo apasionado por la tecnología y la creación de contenido de calidad. 
+          Cada miembro contribuye con su experiencia única para hacer de este blog un recurso valioso para la comunidad.
+        </p>
+        
+        <div class="team-grid">
+          <!-- Espacio para el primer autor -->
+          <div class="team-member">
+            <div class="member-avatar">
+                <img src="/public/devs/cursewl.jpg" alt="Anthony Zerpa">
+            </div>
+            <h3>Anthony Zerpa</h3>
+            <p class="role">Desarrollador Web</p>
+            <p class="bio">Soy Anthony Zerpa de la sección SID4E, creador de Breadriuss/brd, programador de esta plataforma, investigador de ciberseguridad para poder redactar estos articulos.</p>
+          </div>
+
+          <!-- Espacio para el segundo autor -->
+          <div class="team-member">
+            <div class="member-avatar"></div>
+            <h3>Diego Zerpa</h3>
+            <p class="role">Desarrollador Web</p>
+            <p class="bio">Soy Diego Zerpa de la sección SID4E, creador de Breadriuss/brd, investigador de ciberseguridad para poder redactar estos articulos.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="about-tech">
+        <h2>Tecnologías Utilizadas</h2>
+        <div class="tech-stack">
+          <div class="tech-item">
+            <h4>Frontend</h4>
+            <ul>
+              <li>Astro</li>
+              <li>HTML5 & CSS3</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+          <div class="tech-item">
+            <h4>Estilos</h4>
+            <ul>
+              <li>CSS nativo</li>
+              <li>Diseño responsivo</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .about-container {
+    min-height: 100vh;
+    background-color: #0f0f0f;
+    color: #e4e4e4;
+  }
+
+  .about-hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    padding: 6rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #222;
+  }
+
+  .about-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+  }
+
+  .about-content h2 {
+    font-size: 2rem;
+    margin: 3rem 0 1.5rem;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+  }
+
+  .about-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  }
+
+  .about-content p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #ccc;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .team-member {
+    background: rgba(30, 30, 30, 0.5);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #222;
+  }
+
+  .team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .member-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #333;
+    margin: 0 auto 1.5rem;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #4f46e5;
+  }
+
+  .member-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .team-member h3 {
+    color: #fff;
+    margin: 0.5rem 0;
+    font-size: 1.4rem;
+  }
+
+  .role {
+    color: #888 !important;
+    font-style: italic;
+    margin: 0.5rem 0 !important;
+  }
+
+  .bio {
+    font-size: 0.95rem;
+    color: #aaa !important;
+  }
+
+  .tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .tech-item h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .tech-item ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .tech-item li {
+    padding: 0.5rem 0;
+    color: #aaa;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .tech-item li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #4f46e5;
+  }
+
+  @media (max-width: 768px) {
+    .about-hero {
+      padding: 4rem 1rem;
+    }
+    
+    .about-hero h1 {
+      font-size: 2rem;
+    }
+    
+    .subtitle {
+      font-size: 1rem;
+    }
+    
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

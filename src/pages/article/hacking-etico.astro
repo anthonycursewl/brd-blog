@@ -1,0 +1,104 @@
+---
+import Article from '../../components/Article.astro';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Hacking Ético - Técnicas y Metodologías en Ciberseguridad">
+  <Navbar />
+
+  <div class="article-container">
+    <div class="article-content">
+
+    <Article
+      title="Hacking Ético: El Arte de Proteger Sistemas Mediante la Prueba de sus Debilidades"
+      date="2 de Agosto de 2025"
+      author="Equipo Brd+"
+    >
+    <p>El hacking ético se ha consolidado como una disciplina fundamental en la ciberseguridad moderna, permitiendo a las organizaciones identificar y corregir vulnerabilidades antes de que sean explotadas por actores malintencionados. Los hackers éticos, también conocidos como 'sombreros blancos', utilizan las mismas técnicas que los atacantes, pero con el propósito de fortalecer la seguridad de los sistemas y proteger la información confidencial.</p>
+    
+    <h2>Fundamentos del Hacking Ético</h2>
+    
+    <h3>1. Marco Legal y Ética Profesional</h3>
+    <p>El hacking ético se rige por estrictos códigos de conducta y marcos legales. Los profesionales deben contar con autorización expresa antes de realizar pruebas de penetración y están obligados a respetar la confidencialidad de la información a la que acceden. Certificaciones como la CEH (Certified Ethical Hacker) y la OSCP (Offensive Security Certified Professional) validan las competencias técnicas y el compromiso ético de los profesionales en este campo.</p>
+    
+    <h3>2. Metodologías de Evaluación</h3>
+    <p>Las pruebas de penetración siguen metodologías estructuradas como OWASP Testing Guide, PTES (Penetration Testing Execution Standard) y NIST SP 800-115. Estas metodologías definen fases claras que incluyen reconocimiento, escaneo, obtención de acceso, mantenimiento de acceso y análisis de evidencias. Cada fase requiere herramientas y técnicas específicas para evaluar exhaustivamente la seguridad de los sistemas.</p>
+    
+    <h3>3. Herramientas Esenciales</h3>
+    <p>El arsenal de un hacker ético incluye herramientas como Kali Linux, una distribución especializada que agrupa cientos de utilidades de seguridad. Nmap para escaneo de redes, Burp Suite para pruebas de aplicaciones web, Metasploit Framework para desarrollo y ejecución de exploits, y Wireshark para análisis de tráfico son solo algunas de las herramientas fundamentales que todo profesional debe dominar.</p>
+    
+    <h2>Técnicas Avanzadas de Hacking Ético</h2>
+    
+    <h3>1. Pruebas de Penetración Web</h3>
+    <p>Las aplicaciones web son uno de los vectores de ataque más comunes. Las pruebas incluyen la identificación de vulnerabilidades como inyección SQL, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF) y fallos de autenticación. Los hackers éticos utilizan técnicas de fuzzing, inyección de parámetros y manipulación de sesiones para evaluar la resistencia de las aplicaciones.</p>
+    
+    <h3>2. Ingeniería Social</h3>
+    <p>El factor humano sigue siendo el eslabón más débil en la cadena de seguridad. Las pruebas de ingeniería social evalúan la concienciación de los empleados mediante simulaciones de phishing, vishing (phishing por voz) y ataques de pretexting. Estas pruebas ayudan a identificar brechas en los procesos de formación y a fortalecer las políticas de seguridad de la información.</p>
+    
+    <h3>3. Pruebas de Redes Inalámbricas</h3>
+    <p>Las redes Wi-Fi son objetivos frecuentes de ataques. Los hackers éticos evalúan la seguridad de las redes inalámbricas probando la fortaleza de los protocolos de cifrado (WPA2, WPA3), la configuración de puntos de acceso y la segregación de redes. Técnicas como la captura de handshakes y ataques de desautenticación permiten identificar vulnerabilidades críticas.</p>
+    
+    <h2>Desafíos y Tendencias</h2>
+    
+    <h3>1. Internet de las Cosas (IoT) y Dispositivos Móviles</h3>
+    <p>La proliferación de dispositivos IoT y móviles ha ampliado significativamente la superficie de ataque. Los hackers éticos deben adaptar sus técnicas para evaluar la seguridad de dispositivos con recursos limitados, protocolos propietarios y ciclos de vida de soporte variables. La falta de estándares de seguridad consistentes en estos dispositivos plantea desafíos únicos para las pruebas de seguridad.</p>
+    
+    <h3>2. Inteligencia Artificial en Hacking Ético</h3>
+    <p>La inteligencia artificial está transformando el hacking ético, permitiendo la automatización de tareas repetitivas y la identificación de patrones complejos en grandes volúmenes de datos. Los algoritmos de machine learning pueden predecir vectores de ataque potenciales y priorizar vulnerabilidades basándose en su criticidad y probabilidad de explotación.</p>
+    
+    <h3>3. Cloud y Entornos Híbridos</h3>
+    <p>La migración a la nube ha redefinido los modelos de seguridad tradicionales. Los hackers éticos deben estar familiarizados con las configuraciones de seguridad de plataformas como AWS, Azure y Google Cloud, así como con los riesgos específicos de los entornos de nube, como la mala configuración de buckets S3 o el acceso excesivo a roles IAM.</p>
+    
+    <h2>El Futuro del Hacking Ético</h2>
+    <p>A medida que la tecnología evoluciona, también lo hacen las amenazas y las técnicas de defensa. El hacking ético se está convirtiendo en una disciplina cada vez más especializada, con roles específicos para diferentes tipos de pruebas y entornos. La automatización y la inteligencia artificial están transformando la forma en que se realizan las pruebas de seguridad, pero la creatividad y el pensamiento lateral del ser humano siguen siendo insustituibles. Las organizaciones que inviertan en pruebas de seguridad proactivas y en la formación continua de sus equipos estarán mejor preparadas para hacer frente a los desafíos de ciberseguridad del mañana.</p>
+    </Article>
+  </div>
+</div>
+
+  <Footer />
+</Layout>
+
+<style>
+  .article-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .article-content {
+    width: 80%;
+    max-width: 800px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .article-content {
+      width: 95%;
+    }
+  }
+
+  p {
+    color: rgb(224, 224, 224);
+  }
+
+  h2 {
+    font-family: 'Bitcount Prop Single', sans-serif;
+    color: transparent;
+    background-image: linear-gradient(to right, #eeeeee, #9367d4, #f76e6e, #2460ad);
+    -webkit-background-clip: text;
+    margin: 0;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Bitcount Prop Single', sans-serif;
+    color: transparent;
+    background-image: linear-gradient(to right, #eeeeee, #f7f7f7);
+    -webkit-background-clip: text;
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+import Article from '../../components/Article.astro';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Defensa Cibernética - Estrategias y Mejores Prácticas">
+  <Navbar />
+
+  <div class="article-container">
+    <div class="article-content">
+
+    <Article
+      title="Defensa Cibernética: Estrategias para Proteger tu Organización"
+      date="2 de Agosto de 2025"
+      author="Equipo Brd+"
+    >
+    <p>En la era digital actual, la defensa cibernética se ha convertido en un pilar fundamental para la continuidad del negocio. Las organizaciones deben adoptar un enfoque proactivo para proteger sus activos digitales contra amenazas cada vez más sofisticadas.</p>
+    
+    <h2>Fundamentos de la Defensa Cibernética</h2>
+    
+    <h3>1. Protección Perimetral Avanzada</h3>
+    <p>Los firewalls de próxima generación (NGFW) y los sistemas de prevención de intrusiones (IPS) forman la primera línea de defensa, monitoreando y filtrando el tráfico de red en busca de actividades sospechosas.</p>
+    
+    <h3>2. Gestión de Vulnerabilidades</h3>
+    <p>La identificación y corrección proactiva de vulnerabilidades en sistemas y aplicaciones es crucial para reducir la superficie de ataque y prevenir explotaciones.</p>
+    
+    <h3>3. Seguridad de Endpoints</h3>
+    <p>La protección de dispositivos finales mediante soluciones EDR (Endpoint Detection and Response) permite detectar y responder rápidamente a amenazas en tiempo real.</p>
+    
+    <h2>Estrategias de Defensa en Profundidad</h2>
+    
+    <h3>1. Modelo de Confianza Cero</h3>
+    <p>Implementar principios de confianza cero (Zero Trust) que verifiquen explícitamente cada solicitud de acceso, independientemente de su origen o ubicación.</p>
+    
+    <h3>2. Inteligencia de Amenazas</h3>
+    <p>Utilizar fuentes de inteligencia de amenazas para mantenerse actualizado sobre las últimas tácticas, técnicas y procedimientos (TTPs) utilizados por los atacantes.</p>
+    
+    <h3>3. Monitoreo Continuo</h3>
+    <p>Implementar soluciones de SIEM (Security Information and Event Management) para la correlación y análisis de eventos de seguridad en toda la infraestructura.</p>
+    
+    <h2>El Futuro de la Defensa Cibernética</h2>
+    <p>A medida que la tecnología avanza, también lo hacen las amenazas cibernéticas. La adopción de inteligencia artificial y aprendizaje automático está revolucionando la forma en que detectamos y respondemos a incidentes. Sin embargo, la educación continua y la concientización del personal siguen siendo componentes críticos en cualquier estrategia de defensa cibernética efectiva.</p>
+    </Article>
+  </div>
+</div>
+
+  <Footer />
+</Layout>
+
+<style>
+
+  .article-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .article-content {
+    width: 80%;
+    max-width: 800px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .article-content {
+      width: 95%;
+    }
+  }
+
+  p {
+    color: rgb(224, 224, 224);
+  }
+
+  h2 {
+    font-family: 'Bitcount Prop Single', sans-serif;
+    color: transparent;
+    background-image: linear-gradient(to right, #eeeeee, #9367d4, #f76e6e, #2460ad);
+    -webkit-background-clip: text;
+    margin: 0;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Bitcount Prop Single', sans-serif;
+    color: transparent;
+    background-image: linear-gradient(to right, #eeeeee, #f7f7f7);
+    -webkit-background-clip: text;
+  }
+
+    
+</style>
+
